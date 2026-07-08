@@ -56,10 +56,9 @@ function AdminPage() {
   }, [data, q, statusFilter]);
 
   const stats = useMemo(() => {
-    const total = data?.length ?? 0;
     const counts: Record<string, number> = { New: 0, Contacted: 0, Confirmed: 0, Cancelled: 0 };
     data?.forEach((r) => { counts[r.status] = (counts[r.status] ?? 0) + 1; });
-    return { total, ...counts };
+    return { total: data?.length ?? 0, New: counts.New, Contacted: counts.Contacted, Confirmed: counts.Confirmed, Cancelled: counts.Cancelled };
   }, [data]);
 
   async function signOut() {

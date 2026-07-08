@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, useSearch, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
+
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
@@ -56,15 +56,6 @@ function AuthPage() {
     }
   }
 
-  async function signInGoogle() {
-    const res = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
-    });
-    if (res.error) toast.error(res.error.message ?? "Google sign-in failed");
-    if (res.redirected) return;
-    const { data } = await supabase.auth.getUser();
-    if (data.user) navigate({ to: next || "/_authenticated/admin" });
-  }
 
   const input = "w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
 
@@ -96,15 +87,6 @@ function AuthPage() {
                 {mode === "signin" ? "Sign In" : "Create Account"}
               </button>
             </form>
-            <div className="relative my-6 flex items-center gap-3">
-              <div className="h-px flex-1 bg-border" /><span className="text-xs text-muted-foreground">or</span><div className="h-px flex-1 bg-border" />
-            </div>
-            <button
-              onClick={signInGoogle}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-accent transition"
-            >
-              Continue with Google
-            </button>
             <p className="mt-6 text-center text-sm text-muted-foreground">
               {mode === "signin" ? "New here?" : "Have an account?"}{" "}
               <button className="font-semibold text-primary hover:underline" onClick={() => setMode(mode === "signin" ? "signup" : "signin")}>
