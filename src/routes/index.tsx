@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "The Foothill Girls Hostel — Premium Girls Hostel Inside MIT-WPU, Kothrud" },
       { name: "description", content: "Premium girls hostel inside MIT-WPU Campus, Kothrud. Safe, peaceful, hygienic. Spacious rooms, WiFi, CCTV, hygienic vegetarian food. Book a visit today." },
-      { property: "og:title", content: "The Foothill Girls Hostel — Inside MIT-WPU Campus" },
+      { property: "og:title", content: "The Foothill Girls Hostel — Premium Girls Hostel Inside MIT-WPU, Kothrud" },
       { property: "og:image", content: IMAGES.exterior },
       { name: "twitter:image", content: IMAGES.exterior },
       { property: "og:url", content: "/" },
