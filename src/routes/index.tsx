@@ -27,7 +27,7 @@ const AMENITIES = [
   { icon: Camera, label: "CCTV Security" },
   { icon: Shield, label: "Watchman" },
   { icon: Lock, label: "Individual Storage" },
-  { icon: Home, label: "Spacious Rooms" },
+  { icon: HomeIcon, label: "Spacious Rooms" },
   { icon: Sun, label: "Natural Light & Ventilation" },
 ];
 
