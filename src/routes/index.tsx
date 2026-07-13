@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MapPin, Wifi, Sparkles, Utensils, Camera, Shield, Lock, Sun, Home } from "lucide-react";
+import { Phone, MapPin, Wifi, Sparkles, Utensils, Camera, Shield, Lock, Sun, Home as HomeIcon } from "lucide-react";
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { SITE, IMAGES } from "@/lib/site";
