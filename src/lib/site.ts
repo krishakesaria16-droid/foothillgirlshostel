@@ -4,19 +4,35 @@ import bathroomAsset from "@/assets/hostel-bathroom.png.asset.json";
 import wardrobeAsset from "@/assets/hostel-wardrobe.png.asset.json";
 import logoAsset from "@/assets/hostel-logo.png.asset.json";
 
+import pg1 from "@/assets/pg-1.jpeg.asset.json";
+import pg2 from "@/assets/pg-2.jpeg.asset.json";
+import pg3 from "@/assets/pg-3.jpeg.asset.json";
+import pg4 from "@/assets/pg-4.jpeg.asset.json";
+import pg5 from "@/assets/pg-5.jpeg.asset.json";
+import pg6 from "@/assets/pg-6.jpeg.asset.json";
+import pg7 from "@/assets/pg-7.jpeg.asset.json";
+import pg8 from "@/assets/pg-8.jpeg.asset.json";
+import pg9 from "@/assets/pg-9.jpeg.asset.json";
+import pg10 from "@/assets/pg-10.jpeg.asset.json";
+import pg11 from "@/assets/pg-11.jpeg.asset.json";
+import pg12 from "@/assets/pg-12.jpeg.asset.json";
+import pg13 from "@/assets/pg-13.jpeg.asset.json";
+import pg14 from "@/assets/pg-14.jpeg.asset.json";
+
 export const SITE = {
-  name: "The Foothill Girls Hostel",
-  shortName: "The Foothill",
-  tagline: "Inside MIT College Campus, Kothrud, Pune",
-  phone: "+91 8007660249",
-  phoneHref: "tel:+918007660249",
-  whatsapp: "918007660249",
-  whatsappHref:
-    "https://wa.me/918007660249?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20The%20Foothill%20Girls%20Hostel.",
-  email: "nmchhajed@gmail.com",
-  emailHref: "mailto:nmchhajed@gmail.com",
-  address:
-    "Inside MIT College Campus, next to Ramdev Mandir, Kothrud, Pune, Maharashtra 411038",
+  name: "The Foothill Stay",
+  shortName: "The Foothill Stay",
+  tagline: "Premium Girls Hostel & PG — Inside MIT-WPU Campus, Kothrud, Pune",
+  phone1: "7773996600",
+  phone1Href: "tel:+917773996600",
+  phone2: "8181815543",
+  phone2Href: "tel:+918181815543",
+  pgPhone: "8888444859",
+  pgPhoneHref: "tel:+918888444859",
+  email: "thefoothillstay@gmail.com",
+  emailHref: "mailto:thefoothillstay@gmail.com",
+  address: "Inside MIT-WPU Campus, Kothrud, Pune, Maharashtra 411038",
+  pgAddress: "Vanaraji Society, 5 minutes from MIT-WPU, Kothrud, Pune",
   mapEmbed: "https://www.google.com/maps?q=MIT-WPU,+Kothrud,+Pune&output=embed",
   mapDirections:
     "https://www.google.com/maps/dir/?api=1&destination=MIT-WPU+Kothrud+Pune",
@@ -29,3 +45,8 @@ export const IMAGES = {
   wardrobe: wardrobeAsset.url,
   logo: logoAsset.url,
 } as const;
+
+export const PG_IMAGES = [
+  pg1.url, pg2.url, pg3.url, pg4.url, pg5.url, pg6.url, pg7.url,
+  pg8.url, pg9.url, pg10.url, pg11.url, pg12.url, pg13.url, pg14.url,
+];

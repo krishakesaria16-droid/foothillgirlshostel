@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       hostel_inquiries: {
         Row: {
+          accommodation: string | null
           college: string | null
           course: string | null
           created_at: string
@@ -31,6 +32,7 @@ export type Database = {
           year: string | null
         }
         Insert: {
+          accommodation?: string | null
           college?: string | null
           course?: string | null
           created_at?: string
@@ -46,6 +48,7 @@ export type Database = {
           year?: string | null
         }
         Update: {
+          accommodation?: string | null
           college?: string | null
           course?: string | null
           created_at?: string

@@ -1,0 +1,1 @@
+ALTER TABLE public.hostel_inquiries ADD COLUMN IF NOT EXISTS accommodation text;
