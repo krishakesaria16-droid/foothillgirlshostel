@@ -4,8 +4,6 @@ import { submitInquiry } from "@/lib/inquiry.functions";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
-const SHARING = ["Double Sharing", "Triple Sharing", "Quad Sharing"];
-
 export function InquiryForm() {
   const submit = useServerFn(submitInquiry);
   const [loading, setLoading] = useState(false);
@@ -21,8 +19,9 @@ export function InquiryForm() {
           student_name: data.student_name || "",
           phone: data.phone || "",
           email: data.email || "",
+          college: data.college || "",
+          accommodation: data.accommodation || "",
           sharing: data.sharing || "",
-          joining_date: data.joining_date || "",
           message: data.message || "",
         },
       });
@@ -43,11 +42,17 @@ export function InquiryForm() {
       <input required name="student_name" className={input} placeholder="Student Name" />
       <input required name="phone" type="tel" className={input} placeholder="Phone Number" />
       <input required name="email" type="email" className={input} placeholder="Email" />
-      <select name="sharing" className={input} defaultValue="">
-        <option value="" disabled>Preferred Sharing</option>
-        {SHARING.map((s) => <option key={s}>{s}</option>)}
+      <input name="college" className={input} placeholder="College" />
+      <select required name="accommodation" className={input} defaultValue="">
+        <option value="" disabled>Preferred Accommodation</option>
+        <option>Hostel</option>
+        <option>PG</option>
       </select>
-      <input name="joining_date" className={input} placeholder="Expected Joining Month" />
+      <select name="sharing" className={input} defaultValue="">
+        <option value="" disabled>Preferred Room</option>
+        <option>Double Sharing</option>
+        <option>Triple Sharing</option>
+      </select>
       <textarea name="message" rows={3} className={input} placeholder="Message (optional)" />
       <button
         type="submit"
