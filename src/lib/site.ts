@@ -22,7 +22,7 @@ import pg14 from "@/assets/pg-14.jpeg.asset.json";
 export const SITE = {
   name: "The Foothill Stay",
   shortName: "The Foothill Stay",
-  tagline: "Premium Girls Hostel & PG — Inside MIT-WPU Campus, Kothrud, Pune",
+  tagline: "Premium Girls Hostel & PG — Near MIT-WPU, Kothrud, Pune",
   phone1: "7773996600",
   phone1Href: "tel:+917773996600",
   phone2: "8181815543",
@@ -36,6 +36,10 @@ export const SITE = {
   mapEmbed: "https://www.google.com/maps?q=MIT-WPU,+Kothrud,+Pune&output=embed",
   mapDirections:
     "https://www.google.com/maps/dir/?api=1&destination=MIT-WPU+Kothrud+Pune",
+  pgMapEmbed:
+    "https://www.google.com/maps?q=Vanaraji+Society+Kothrud+Pune&output=embed",
+  pgMapDirections:
+    "https://www.google.com/maps/dir/?api=1&destination=Vanaraji+Society+Kothrud+Pune",
 } as const;
 
 export const IMAGES = {
@@ -45,6 +49,13 @@ export const IMAGES = {
   wardrobe: wardrobeAsset.url,
   logo: logoAsset.url,
 } as const;
+
+export const HOSTEL_GALLERY = [
+  IMAGES.exterior,
+  IMAGES.room,
+  IMAGES.wardrobe,
+  IMAGES.bathroom,
+];
 
 export const PG_IMAGES = [
   pg1.url, pg2.url, pg3.url, pg4.url, pg5.url, pg6.url, pg7.url,

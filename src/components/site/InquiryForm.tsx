@@ -4,7 +4,15 @@ import { submitInquiry } from "@/lib/inquiry.functions";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
-export function InquiryForm() {
+type Variant = "hostel" | "pg";
+
+export function InquiryForm({
+  variant = "hostel",
+  defaultSharing,
+}: {
+  variant?: Variant;
+  defaultSharing?: string;
+}) {
   const submit = useServerFn(submitInquiry);
   const [loading, setLoading] = useState(false);
 
@@ -14,15 +22,21 @@ export function InquiryForm() {
     const data = Object.fromEntries(fd.entries()) as Record<string, string>;
     setLoading(true);
     try {
+      const joining = data.joining_month || "";
+      const baseMessage = data.message || "";
+      const composedMessage = joining
+        ? `Expected Joining: ${joining}${baseMessage ? `\n\n${baseMessage}` : ""}`
+        : baseMessage;
+
       await submit({
         data: {
           student_name: data.student_name || "",
           phone: data.phone || "",
           email: data.email || "",
           college: data.college || "",
-          accommodation: data.accommodation || "",
-          sharing: data.sharing || "",
-          message: data.message || "",
+          accommodation: variant === "pg" ? "PG" : "Hostel",
+          sharing: variant === "pg" ? "Double Sharing" : data.sharing || "",
+          message: composedMessage,
         },
       });
       toast.success("Inquiry sent! We'll contact you shortly.");
@@ -43,16 +57,15 @@ export function InquiryForm() {
       <input required name="phone" type="tel" className={input} placeholder="Phone Number" />
       <input required name="email" type="email" className={input} placeholder="Email" />
       <input name="college" className={input} placeholder="College" />
-      <select required name="accommodation" className={input} defaultValue="">
-        <option value="" disabled>Preferred Accommodation</option>
-        <option>Hostel</option>
-        <option>PG</option>
-      </select>
-      <select name="sharing" className={input} defaultValue="">
-        <option value="" disabled>Preferred Room</option>
-        <option>Double Sharing</option>
-        <option>Triple Sharing</option>
-      </select>
+      {variant === "hostel" && (
+        <select required name="sharing" className={input} defaultValue={defaultSharing ?? ""}>
+          <option value="" disabled>Preferred Sharing</option>
+          <option>Double Sharing</option>
+          <option>Triple Sharing</option>
+          <option>Quadruple Sharing</option>
+        </select>
+      )}
+      <input name="joining_month" className={input} placeholder="Expected Joining Month (e.g. July 2026)" />
       <textarea name="message" rows={3} className={input} placeholder="Message (optional)" />
       <button
         type="submit"
