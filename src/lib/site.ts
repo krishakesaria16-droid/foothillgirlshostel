@@ -55,6 +55,9 @@ export const IMAGES = {
   bathroom: bathroomAsset.url,
   wardrobe: wardrobeAsset.url,
   logo: logoAsset.url,
+  double: hDouble.url,
+  triple: hTriple.url,
+  quad: hQuad.url,
 } as const;
 
 export const HOSTEL_GALLERY = [
@@ -62,6 +65,12 @@ export const HOSTEL_GALLERY = [
   IMAGES.room,
   IMAGES.wardrobe,
   IMAGES.bathroom,
+  hRoomA.url,
+  hRoomB.url,
+  hDouble.url,
+  hStudy.url,
+  hTriple.url,
+  hQuad.url,
 ];
 
 export const PG_IMAGES = [
