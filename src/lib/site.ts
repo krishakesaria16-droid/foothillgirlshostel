@@ -2,7 +2,7 @@ import exteriorAsset from "@/assets/hostel-exterior.png.asset.json";
 import roomAsset from "@/assets/hostel-room.png.asset.json";
 import bathroomAsset from "@/assets/hostel-bathroom.png.asset.json";
 import wardrobeAsset from "@/assets/hostel-wardrobe.png.asset.json";
-import logoAsset from "@/assets/hostel-logo.png.asset.json";
+import logoAsset from "@/assets/hostel-logo.jpeg.asset.json";
 
 import hRoomA from "@/assets/h-room-a.jpeg.asset.json";
 import hRoomB from "@/assets/h-room-b.jpeg.asset.json";
