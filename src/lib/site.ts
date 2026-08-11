@@ -4,6 +4,13 @@ import bathroomAsset from "@/assets/hostel-bathroom.png.asset.json";
 import wardrobeAsset from "@/assets/hostel-wardrobe.png.asset.json";
 import logoAsset from "@/assets/hostel-logo.png.asset.json";
 
+import hRoomA from "@/assets/h-room-a.jpeg.asset.json";
+import hRoomB from "@/assets/h-room-b.jpeg.asset.json";
+import hDouble from "@/assets/h-double.jpeg.asset.json";
+import hStudy from "@/assets/h-study.jpeg.asset.json";
+import hTriple from "@/assets/h-triple.png.asset.json";
+import hQuad from "@/assets/h-quad.png.asset.json";
+
 import pg1 from "@/assets/pg-1.jpeg.asset.json";
 import pg2 from "@/assets/pg-2.jpeg.asset.json";
 import pg3 from "@/assets/pg-3.jpeg.asset.json";
@@ -48,6 +55,9 @@ export const IMAGES = {
   bathroom: bathroomAsset.url,
   wardrobe: wardrobeAsset.url,
   logo: logoAsset.url,
+  double: hDouble.url,
+  triple: hTriple.url,
+  quad: hQuad.url,
 } as const;
 
 export const HOSTEL_GALLERY = [
@@ -55,6 +65,12 @@ export const HOSTEL_GALLERY = [
   IMAGES.room,
   IMAGES.wardrobe,
   IMAGES.bathroom,
+  hRoomA.url,
+  hRoomB.url,
+  hDouble.url,
+  hStudy.url,
+  hTriple.url,
+  hQuad.url,
 ];
 
 export const PG_IMAGES = [

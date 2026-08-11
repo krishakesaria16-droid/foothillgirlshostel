@@ -51,9 +51,9 @@ const AMENITIES = [
 const MEALS = ["Breakfast", "Lunch", "Evening High Tea", "Dinner"];
 
 const ROOMS = [
-  { title: "Double Sharing", image: IMAGES.room },
-  { title: "Triple Sharing", image: IMAGES.wardrobe },
-  { title: "Quadruple Sharing", image: IMAGES.bathroom },
+  { title: "Double Sharing", image: IMAGES.double },
+  { title: "Triple Sharing", image: IMAGES.triple },
+  { title: "Quadruple Sharing", image: IMAGES.quad },
 ];
 
 function HostelPage() {
