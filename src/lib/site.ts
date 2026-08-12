@@ -68,7 +68,6 @@ export const HOSTEL_GALLERY = [
   IMAGES.room,
   IMAGES.wardrobe,
   IMAGES.bathroom,
-  hRoomA.url,
   hRoomB.url,
   hDouble.url,
   hStudy.url,
