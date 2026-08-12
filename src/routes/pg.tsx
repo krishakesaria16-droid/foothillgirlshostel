@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Phone, MapPin, Wifi, Sparkles, Camera, Shield, Sun,
-  Shirt, Wrench, Zap, Droplet, Refrigerator, Flame, TableProperties, Archive,
+  Shirt, Droplet, Refrigerator, Flame, Archive, Trees,
 } from "lucide-react";
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { InquiryForm } from "@/components/site/InquiryForm";
@@ -33,18 +33,16 @@ export const Route = createFileRoute("/pg")({
 
 const AMENITIES = [
   { icon: Wifi, label: "High-Speed Fiber Internet" },
-  { icon: Sparkles, label: "24×7 Housekeeping" },
+  { icon: Sparkles, label: "Housekeeping" },
   { icon: Camera, label: "24×7 CCTV & Security Guard" },
-  { icon: TableProperties, label: "Indoor Games" },
   { icon: Archive, label: "Extra Spacious Wardrobes" },
   { icon: Sun, label: "Sun-Kissed Rooms" },
   { icon: Shirt, label: "Laundry & Drying Area" },
-  { icon: Wrench, label: "In-House Maintenance 24×7" },
-  { icon: Zap, label: "24×7 Generator Backup" },
   { icon: Droplet, label: "24×7 Hot Water" },
   { icon: Refrigerator, label: "Refrigerator" },
-  { icon: Flame, label: "Induction Cooktop" },
+  { icon: Flame, label: "Gas" },
   { icon: Shield, label: "Safe & Peaceful Locality" },
+  { icon: Trees, label: "Attached Balcony" },
 ];
 
 function PgPage() {
@@ -159,7 +157,7 @@ function PgPage() {
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-center">Room Type</h2>
           <div className="mt-10 rounded-3xl overflow-hidden border border-border/60 bg-card">
             <div className="aspect-[4/3] overflow-hidden bg-muted">
-              <img src={PG_IMAGES[1] ?? PG_IMAGES[0]} alt="PG Double Sharing Room" loading="lazy" className="h-full w-full object-cover" />
+              <img src={IMAGES.pgDouble} alt="PG Double Sharing Room" loading="lazy" className="h-full w-full object-cover" />
             </div>
             <div className="p-6">
               <h3 className="font-display text-lg font-semibold">Double Sharing</h3>

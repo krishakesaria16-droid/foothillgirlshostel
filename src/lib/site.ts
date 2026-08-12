@@ -2,7 +2,8 @@ import exteriorAsset from "@/assets/hostel-exterior.png.asset.json";
 import roomAsset from "@/assets/hostel-room.png.asset.json";
 import bathroomAsset from "@/assets/hostel-bathroom.png.asset.json";
 import wardrobeAsset from "@/assets/hostel-wardrobe.png.asset.json";
-import logoAsset from "@/assets/hostel-logo.jpeg.asset.json";
+import logoAsset from "@/assets/hostel-logo-circle.jpeg.asset.json";
+import pgDouble from "@/assets/pg-double.png.asset.json";
 
 import hRoomA from "@/assets/h-room-a.jpeg.asset.json";
 import hRoomB from "@/assets/h-room-b.jpeg.asset.json";
@@ -58,6 +59,7 @@ export const IMAGES = {
   double: hDouble.url,
   triple: hTriple.url,
   quad: hQuad.url,
+  pgDouble: pgDouble.url,
 } as const;
 
 export const HOSTEL_GALLERY = [
