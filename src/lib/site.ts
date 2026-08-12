@@ -8,6 +8,7 @@ import pgDouble from "@/assets/pg-double.png.asset.json";
 import hRoomA from "@/assets/h-room-a.jpeg.asset.json";
 import hRoomB from "@/assets/h-room-b.jpeg.asset.json";
 import hDouble from "@/assets/h-double.jpeg.asset.json";
+import hDoubleNew from "@/assets/h-double-new.png.asset.json";
 import hStudy from "@/assets/h-study.jpeg.asset.json";
 import hTriple from "@/assets/h-triple.png.asset.json";
 import hQuad from "@/assets/h-quad.png.asset.json";
@@ -56,7 +57,7 @@ export const IMAGES = {
   bathroom: bathroomAsset.url,
   wardrobe: wardrobeAsset.url,
   logo: logoAsset.url,
-  double: hDouble.url,
+  double: hDoubleNew.url,
   triple: hTriple.url,
   quad: hQuad.url,
   pgDouble: pgDouble.url,
