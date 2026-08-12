@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "foothill-stay",
+  "main": "dist/server/index.mjs",
+  "compatibility_date": "2026-08-12",
+  "compatibility_flags": [],
+  // Run the production build (`bun run build`) before deploying.
+  // The Vite/nitro build emits:
+  //   - dist/server/index.mjs  -> Cloudflare Worker (SSR + server functions, e.g. the inquiry form)
+  //   - dist/client/          -> static assets (JS/CSS/favicon) served directly by the asset binding
+  // Cloudflare checks static assets first; any non-matching request falls through to the
+  // Worker, which server-renders pages (/, /hostel, /pg, /privacy) and handles the 404 page.
+  // A single-page-application fallback is intentionally NOT used: this app is server-rendered
+  // and has no static index.html, so SPA fallback would shadow the Worker and break routing.
+  "assets": {
+    "directory": "dist/client",
+    "binding": "ASSETS"
+  },
+  // nitro pre-bundles the server entry (incl. unenv polyfills); upload as-is without re-bundling.
+  "no_bundle": true,
+  "rules": [
+    {
+      "type": "ESModule",
+      "globs": ["**/*.mjs", "**/*.js"]
+    }
+  ]
+}
