@@ -123,10 +123,10 @@ function PgPage() {
       <section className="py-12 border-t border-border/60">
         <div className="mx-auto max-w-3xl px-4 md:px-6 text-center">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            The Foothill Stay PG offers premium girls' accommodation in Vanaraji Society, just five
-            minutes from MIT-WPU. Spacious double-sharing rooms, modern amenities, dedicated
-            housekeeping, high-speed internet, and a peaceful environment make it an ideal home for
-            students.
+            The Foothill Stay PG offers premium girls accommodation in Vanaraji Society, just five
+            minutes from MIT-WPU.{"\u00a0"}<br />
+            Spacious double-sharing rooms, modern amenities, dedicated housekeeping, high-speed
+            internet, and a peaceful environment make it an ideal home for students.
           </p>
         </div>
       </section>
