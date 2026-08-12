@@ -5,7 +5,7 @@ import wardrobeAsset from "@/assets/hostel-wardrobe.png.asset.json";
 import logoAsset from "@/assets/hostel-logo-circle.jpeg.asset.json";
 import pgDouble from "@/assets/pg-double.png.asset.json";
 
-import hRoomA from "@/assets/h-room-a.jpeg.asset.json";
+import hRoomA from "@/assets/h-room-new.png.asset.json";
 import hRoomB from "@/assets/h-room-b.jpeg.asset.json";
 import hDouble from "@/assets/h-double.jpeg.asset.json";
 import hStudy from "@/assets/h-study.jpeg.asset.json";
