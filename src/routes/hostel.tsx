@@ -45,7 +45,7 @@ const AMENITIES = [
   { icon: Droplet, label: "24×7 Hot Water" },
   { icon: Refrigerator, label: "Refrigerator" },
   { icon: Flame, label: "Induction Cooktop" },
-  { icon: Shield, label: "Safe Campus Location" },
+  { icon: Shield, label: "Safe & Secure" },
 ];
 
 const MEALS = ["Breakfast", "Lunch", "Evening High Tea", "Dinner"];
@@ -120,12 +120,9 @@ function HostelPage() {
               title="The Foothill Stay Hostel Location"
             />
           </div>
-          <div className="mt-8 grid gap-3 sm:grid-cols-3 text-center text-sm">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 text-center text-sm">
             <div className="rounded-2xl bg-primary-soft px-4 py-3 font-semibold text-primary">
               Inside MIT-WPU Campus
-            </div>
-            <div className="rounded-2xl bg-primary-soft px-4 py-3 font-semibold text-primary">
-              Kothrud, Pune
             </div>
             <div className="rounded-2xl bg-primary-soft px-4 py-3 font-semibold text-primary">
               Safe & Easy Walking Distance
