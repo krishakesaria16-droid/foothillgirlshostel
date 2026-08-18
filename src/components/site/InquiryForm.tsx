@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { submitInquiry } from "@/lib/inquiry.functions";
+import { notifyInquiry } from "@/lib/inquiry.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
@@ -13,12 +14,13 @@ export function InquiryForm({
   variant?: Variant;
   defaultSharing?: string;
 }) {
-  const submit = useServerFn(submitInquiry);
+  const notify = useServerFn(notifyInquiry);
   const [loading, setLoading] = useState(false);
 
   async function handle(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const data = Object.fromEntries(fd.entries()) as Record<string, string>;
     setLoading(true);
     try {
@@ -28,25 +30,39 @@ export function InquiryForm({
         ? `Expected Joining: ${joining}${baseMessage ? `\n\n${baseMessage}` : ""}`
         : baseMessage;
 
-      await submit({
-        data: {
-          student_name: data.student_name || "",
-          phone: data.phone || "",
-          email: data.email || "",
-          college: data.college || "",
-          accommodation: variant === "pg" ? "PG" : "Hostel",
-          sharing: variant === "pg" ? "Double Sharing" : data.sharing || "",
-          message: composedMessage,
-        },
+      const payload = {
+        student_name: (data.student_name || "").trim(),
+        phone: (data.phone || "").trim(),
+        email: (data.email || "").trim(),
+        college: (data.college || "").trim(),
+        accommodation: variant === "pg" ? "PG" : "Hostel",
+        sharing: variant === "pg" ? "Double Sharing" : data.sharing || "",
+        message: composedMessage.trim(),
+      };
+
+      const { error } = await supabase.from("hostel_inquiries").insert({
+        student_name: payload.student_name,
+        phone: payload.phone,
+        email: payload.email,
+        college: payload.college || null,
+        accommodation: payload.accommodation,
+        sharing: payload.sharing || null,
+        message: payload.message || null,
       });
+      if (error) throw new Error(error.message);
+
+      // Best-effort email notification; never blocks the submission.
+      void notify({ data: payload }).catch(() => {});
+
       toast.success("Inquiry sent! We'll contact you shortly.");
-      (e.target as HTMLFormElement).reset();
+      form.reset();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setLoading(false);
     }
   }
+
 
   const input =
     "w-full rounded-xl border border-input bg-background px-4 py-3 text-base outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20";
