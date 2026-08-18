@@ -13,21 +13,12 @@ const inquirySchema = z.object({
 
 export type InquiryInput = z.infer<typeof inquirySchema>;
 
-export const submitInquiry = createServerFn({ method: "POST" })
+// Email-only notification. The DB insert happens client-side through the
+// publishable key + the "Anyone can submit an inquiry" RLS policy, so no
+// service-role key is needed anywhere.
+export const notifyInquiry = createServerFn({ method: "POST" })
   .inputValidator((raw: unknown) => inquirySchema.parse(raw))
   .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin.from("hostel_inquiries").insert({
-      student_name: data.student_name,
-      phone: data.phone,
-      email: data.email,
-      college: data.college || null,
-      accommodation: data.accommodation || null,
-      sharing: data.sharing || null,
-      message: data.message || null,
-    });
-    if (error) throw new Error(error.message);
-
     const resendKey = process.env.RESEND_API_KEY;
     if (resendKey) {
       const send = (payload: Record<string, unknown>) =>
