@@ -66,7 +66,4 @@ export const HOSTEL_GALLERY = [
   hQuad.url,
 ];
 
-export const PG_IMAGES = [
-  pg1.url, pg2.url, pg3.url, pg4.url, pg5.url, pg6.url, pg7.url,
-  pg8.url, pg9.url, pg10.url, pg11.url, pg12.url, pg13.url, pg14.url,
-];
+export const PG_IMAGES = pgNew.map((a) => a.url);
