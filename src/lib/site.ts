@@ -15,20 +15,8 @@ const hStudy = { url: `${P}/h-study.jpeg` };
 const hTriple = { url: `${P}/h-triple.png` };
 const hQuad = { url: `${P}/h-quad.png` };
 
-const pg1 = { url: `${P}/pg-1.jpeg` };
-const pg2 = { url: `${P}/pg-2.jpeg` };
-const pg3 = { url: `${P}/pg-3.jpeg` };
-const pg4 = { url: `${P}/pg-4.jpeg` };
-const pg5 = { url: `${P}/pg-5.jpeg` };
-const pg6 = { url: `${P}/pg-6.jpeg` };
-const pg7 = { url: `${P}/pg-7.jpeg` };
-const pg8 = { url: `${P}/pg-8.jpeg` };
-const pg9 = { url: `${P}/pg-9.jpeg` };
-const pg10 = { url: `${P}/pg-10.jpeg` };
-const pg11 = { url: `${P}/pg-11.jpeg` };
-const pg12 = { url: `${P}/pg-12.jpeg` };
-const pg13 = { url: `${P}/pg-13.jpeg` };
-const pg14 = { url: `${P}/pg-14.jpeg` };
+const pgNew = Array.from({ length: 9 }, (_, i) => ({ url: `${P}/pg-new-${i + 1}.jpeg` }));
+
 void hRoomA;
 
 export const SITE = {
