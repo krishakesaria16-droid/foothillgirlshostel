@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PgRouteImport } from './routes/pg'
 import { Route as HostelRouteImport } from './routes/hostel'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PgIndexRouteImport } from './routes/pg.index'
@@ -17,6 +18,11 @@ import { Route as PgIndexRouteImport } from './routes/pg.index'
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PgRoute = PgRouteImport.update({
+  id: '/pg',
+  path: '/pg',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HostelRoute = HostelRouteImport.update({
@@ -30,14 +36,15 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const PgIndexRoute = PgIndexRouteImport.update({
-  id: '/pg/',
-  path: '/pg/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => PgRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/hostel': typeof HostelRoute
+  '/pg': typeof PgRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/pg/': typeof PgIndexRoute
 }
@@ -51,22 +58,23 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/hostel': typeof HostelRoute
+  '/pg': typeof PgRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/pg/': typeof PgIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hostel' | '/privacy' | '/pg/'
+  fullPaths: '/' | '/hostel' | '/pg' | '/privacy' | '/pg/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/hostel' | '/privacy' | '/pg'
-  id: '__root__' | '/' | '/hostel' | '/privacy' | '/pg/'
+  id: '__root__' | '/' | '/hostel' | '/pg' | '/privacy' | '/pg/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HostelRoute: typeof HostelRoute
+  PgRoute: typeof PgRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
-  PgIndexRoute: typeof PgIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +84,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pg': {
+      id: '/pg'
+      path: '/pg'
+      fullPath: '/pg'
+      preLoaderRoute: typeof PgRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hostel': {
@@ -94,19 +109,29 @@ declare module '@tanstack/react-router' {
     }
     '/pg/': {
       id: '/pg/'
-      path: '/pg'
+      path: '/'
       fullPath: '/pg/'
       preLoaderRoute: typeof PgIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PgRoute
     }
   }
 }
 
+interface PgRouteChildren {
+  PgIndexRoute: typeof PgIndexRoute
+}
+
+const PgRouteChildren: PgRouteChildren = {
+  PgIndexRoute: PgIndexRoute,
+}
+
+const PgRouteWithChildren = PgRoute._addFileChildren(PgRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HostelRoute: HostelRoute,
+  PgRoute: PgRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
-  PgIndexRoute: PgIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
