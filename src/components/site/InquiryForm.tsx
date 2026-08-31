@@ -10,9 +10,11 @@ type Variant = "hostel" | "pg";
 export function InquiryForm({
   variant = "hostel",
   defaultSharing,
+  floor,
 }: {
   variant?: Variant;
   defaultSharing?: string;
+  floor?: string;
 }) {
   const notify = useServerFn(notifyInquiry);
   const [loading, setLoading] = useState(false);
