@@ -10,9 +10,11 @@ type Variant = "hostel" | "pg";
 export function InquiryForm({
   variant = "hostel",
   defaultSharing,
+  floor,
 }: {
   variant?: Variant;
   defaultSharing?: string;
+  floor?: string;
 }) {
   const notify = useServerFn(notifyInquiry);
   const [loading, setLoading] = useState(false);
@@ -26,9 +28,12 @@ export function InquiryForm({
     try {
       const joining = data.joining_month || "";
       const baseMessage = data.message || "";
-      const composedMessage = joining
-        ? `Expected Joining: ${joining}${baseMessage ? `\n\n${baseMessage}` : ""}`
-        : baseMessage;
+      const parts = [
+        floor ? `Floor: ${floor}` : "",
+        joining ? `Expected Joining: ${joining}` : "",
+        baseMessage,
+      ].filter(Boolean);
+      const composedMessage = parts.join("\n\n");
 
       const payload = {
         student_name: (data.student_name || "").trim(),

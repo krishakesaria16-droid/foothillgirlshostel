@@ -13,6 +13,9 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PgRouteImport } from './routes/pg'
 import { Route as HostelRouteImport } from './routes/hostel'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PgIndexRouteImport } from './routes/pg.index'
+import { Route as PgVanaraji9thFloorRouteImport } from './routes/pg.vanaraji-9th-floor'
+import { Route as PgVanaraji10thFloorRouteImport } from './routes/pg.vanaraji-10th-floor'
 
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
@@ -34,38 +37,82 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PgIndexRoute = PgIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PgRoute,
+} as any)
+const PgVanaraji9thFloorRoute = PgVanaraji9thFloorRouteImport.update({
+  id: '/vanaraji-9th-floor',
+  path: '/vanaraji-9th-floor',
+  getParentRoute: () => PgRoute,
+} as any)
+const PgVanaraji10thFloorRoute = PgVanaraji10thFloorRouteImport.update({
+  id: '/vanaraji-10th-floor',
+  path: '/vanaraji-10th-floor',
+  getParentRoute: () => PgRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/hostel': typeof HostelRoute
-  '/pg': typeof PgRoute
+  '/pg': typeof PgRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/pg/vanaraji-10th-floor': typeof PgVanaraji10thFloorRoute
+  '/pg/vanaraji-9th-floor': typeof PgVanaraji9thFloorRoute
+  '/pg/': typeof PgIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/hostel': typeof HostelRoute
-  '/pg': typeof PgRoute
   '/privacy': typeof PrivacyRoute
+  '/pg/vanaraji-10th-floor': typeof PgVanaraji10thFloorRoute
+  '/pg/vanaraji-9th-floor': typeof PgVanaraji9thFloorRoute
+  '/pg': typeof PgIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/hostel': typeof HostelRoute
-  '/pg': typeof PgRoute
+  '/pg': typeof PgRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/pg/vanaraji-10th-floor': typeof PgVanaraji10thFloorRoute
+  '/pg/vanaraji-9th-floor': typeof PgVanaraji9thFloorRoute
+  '/pg/': typeof PgIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hostel' | '/pg' | '/privacy'
+  fullPaths:
+    | '/'
+    | '/hostel'
+    | '/pg'
+    | '/privacy'
+    | '/pg/vanaraji-10th-floor'
+    | '/pg/vanaraji-9th-floor'
+    | '/pg/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hostel' | '/pg' | '/privacy'
-  id: '__root__' | '/' | '/hostel' | '/pg' | '/privacy'
+  to:
+    | '/'
+    | '/hostel'
+    | '/privacy'
+    | '/pg/vanaraji-10th-floor'
+    | '/pg/vanaraji-9th-floor'
+    | '/pg'
+  id:
+    | '__root__'
+    | '/'
+    | '/hostel'
+    | '/pg'
+    | '/privacy'
+    | '/pg/vanaraji-10th-floor'
+    | '/pg/vanaraji-9th-floor'
+    | '/pg/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HostelRoute: typeof HostelRoute
-  PgRoute: typeof PgRoute
+  PgRoute: typeof PgRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
 }
 
@@ -99,13 +146,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pg/': {
+      id: '/pg/'
+      path: '/'
+      fullPath: '/pg/'
+      preLoaderRoute: typeof PgIndexRouteImport
+      parentRoute: typeof PgRoute
+    }
+    '/pg/vanaraji-9th-floor': {
+      id: '/pg/vanaraji-9th-floor'
+      path: '/vanaraji-9th-floor'
+      fullPath: '/pg/vanaraji-9th-floor'
+      preLoaderRoute: typeof PgVanaraji9thFloorRouteImport
+      parentRoute: typeof PgRoute
+    }
+    '/pg/vanaraji-10th-floor': {
+      id: '/pg/vanaraji-10th-floor'
+      path: '/vanaraji-10th-floor'
+      fullPath: '/pg/vanaraji-10th-floor'
+      preLoaderRoute: typeof PgVanaraji10thFloorRouteImport
+      parentRoute: typeof PgRoute
+    }
   }
 }
+
+interface PgRouteChildren {
+  PgVanaraji10thFloorRoute: typeof PgVanaraji10thFloorRoute
+  PgVanaraji9thFloorRoute: typeof PgVanaraji9thFloorRoute
+  PgIndexRoute: typeof PgIndexRoute
+}
+
+const PgRouteChildren: PgRouteChildren = {
+  PgVanaraji10thFloorRoute: PgVanaraji10thFloorRoute,
+  PgVanaraji9thFloorRoute: PgVanaraji9thFloorRoute,
+  PgIndexRoute: PgIndexRoute,
+}
+
+const PgRouteWithChildren = PgRoute._addFileChildren(PgRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HostelRoute: HostelRoute,
-  PgRoute: PgRoute,
+  PgRoute: PgRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
 }
 export const routeTree = rootRouteImport
