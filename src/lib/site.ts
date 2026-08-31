@@ -74,7 +74,7 @@ export const FLOOR_9_IMAGES = Array.from(
   (_, i) => `${P}/f9-${i + 1}.jpeg`
 );
 
-export const FLOOR_10_IMAGES = Array.from(
-  { length: 10 },
-  (_, i) => `${P}/f10-${i + 1}.jpeg`
-);
+export const FLOOR_10_IMAGES = [
+  "f10-1", "f10-2", "f10-3", "f10-4", "f10-5",
+  "f10-6", "f10-7", "f10-8", "f10-10", "f10-9",
+].map((n) => `${P}/${n}.jpeg`);
