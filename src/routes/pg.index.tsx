@@ -7,7 +7,7 @@ import { SiteChrome } from "@/components/site/SiteChrome";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { SITE, IMAGES, PG_IMAGES } from "@/lib/site";
 
-export const Route = createFileRoute("/pg")({
+export const Route = createFileRoute("/pg/")({
   head: () => ({
     meta: [
       { title: "Girls PG in Vanaraji Society Near MIT-WPU | The Foothill Stay" },
