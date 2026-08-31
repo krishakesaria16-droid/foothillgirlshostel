@@ -67,3 +67,14 @@ export const HOSTEL_GALLERY = [
 ];
 
 export const PG_IMAGES = pgNew.map((a) => a.url);
+
+// Floor-specific PG photo collections — kept strictly separate.
+export const FLOOR_9_IMAGES = Array.from(
+  { length: 11 },
+  (_, i) => `${P}/f9-${i + 1}.jpeg`
+);
+
+export const FLOOR_10_IMAGES = Array.from(
+  { length: 10 },
+  (_, i) => `${P}/f10-${i + 1}.jpeg`
+);
