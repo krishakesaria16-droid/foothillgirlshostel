@@ -107,9 +107,6 @@ export function FloorPage({
               </div>
             ))}
           </div>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
-            Food is not provided in the PG.
-          </p>
         </div>
       </section>
 
