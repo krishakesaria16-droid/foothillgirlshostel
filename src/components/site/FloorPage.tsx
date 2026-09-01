@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
-  Phone, MapPin, Wifi, Sparkles, Camera, Sun, Shirt, Droplet,
-  Refrigerator, Archive, Wrench, Zap, TableProperties, X, ArrowRight,
+  Phone, MapPin, Wifi, Sparkles, Camera, Sun, Droplet,
+  Refrigerator, Archive, Wrench, Flame, WashingMachine, X, ArrowRight,
 } from "lucide-react";
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { InquiryForm } from "@/components/site/InquiryForm";
