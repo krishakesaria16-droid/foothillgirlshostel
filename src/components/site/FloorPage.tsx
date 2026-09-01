@@ -12,14 +12,13 @@ const AMENITIES = [
   { icon: Wifi, label: "High-Speed Fiber Internet" },
   { icon: Sparkles, label: "Dedicated 24×7 Housekeeping" },
   { icon: Camera, label: "24×7 CCTV Surveillance & Security Guard" },
-  { icon: TableProperties, label: "Table Tennis & Indoor Games" },
   { icon: Archive, label: "Extra Spacious Wardrobes" },
   { icon: Sun, label: "Spacious, Sun-Kissed Rooms" },
-  { icon: Shirt, label: "Separate Laundry & Drying Area" },
   { icon: Wrench, label: "In-House Maintenance Team 24/7" },
-  { icon: Zap, label: "24/7 Generator Backup" },
   { icon: Droplet, label: "24/7 Hot Water" },
-  { icon: Refrigerator, label: "Refrigerator & Induction Cooktop" },
+  { icon: Refrigerator, label: "Refrigerator" },
+  { icon: Flame, label: "Gas" },
+  { icon: WashingMachine, label: "Washing Machine" },
 ];
 
 export function FloorPage({
